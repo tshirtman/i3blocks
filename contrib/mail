@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+MAILDIR=$(eval echo "${BLOCK_INSTANCE}")
+new=$(ls $MAILDIR/new | wc -l)
+cur=$(ls $MAILDIR/cur | wc -l)
+total=$(($new+$cur))
+
+echo "$total($new)"
+echo "$total($new)"
+if [ $new != '0' ]
+then
+	echo "#FF0000"
+fi
