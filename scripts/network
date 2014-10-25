@@ -32,7 +32,7 @@ ipaddr="${ipaddr:-0.0.0.0}"
 
 # full text
 echo -n "$ipaddr"
-[ -n "$speed" ] && echo " ($speed Mbits/s)" || echo
+[ -n "$speed" ] && echo " ($speed Mb/s)" || echo
 
 # short text
 echo "$ipaddr"
