@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
 # Copyright (C) 2014 Alexander Keller <github@nycroth.com>
 
@@ -67,4 +67,22 @@ case $BLOCK_BUTTON in
   5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- ;; # scroll down, decrease
 esac
 
-volume | format
+volume_value="$(volume|format)"
+icon='🔈'
+
+if [ $volume_value == 'MUTE' ]; then
+	icon='🔇'
+fi
+
+v=${volume_value%\%}
+
+if [ $v -gt 40 ]; then
+	icon='🔉'
+fi
+if [ $v -gt 60 ]; then
+	icon='🔊'
+fi
+
+echo $icon $volume_value
+echo $icon $volume_value
+printf "#%02x%02x00\n" $((v * 255 / 100)) $((255 - v * 255 / 100))

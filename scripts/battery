@@ -34,13 +34,14 @@ if ($acpi !~ /: (\w+), (\d+)%/) {
 
 $status = $1;
 $percent = $2;
-$full_text = "$percent%";
 
 if ($status eq 'Discharging') {
-	$full_text .= ' DIS';
+	$full_text .= '🔋 ';
 } elsif ($status eq 'Charging') {
-	$full_text .= ' CHR';
+	$full_text .= '🔌';
 }
+
+$full_text .= "$percent%";
 
 $short_text = $full_text;
 
