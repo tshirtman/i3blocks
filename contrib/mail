@@ -8,5 +8,5 @@ echo "$total($new)"
 echo "$total($new)"
 if [ $new != '0' ]
 then
-	echo "#FF0000"
+	echo "#FF2020"
 fi
