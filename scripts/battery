@@ -15,15 +15,24 @@
 use strict;
 use warnings;
 use utf8;
+use Env qw(BLOCK_INSTANCE);
 
 my $acpi;
 my $status;
 my $percent;
 my $full_text;
 my $short_text;
+my $command;
+
+$command = 'acpi -b ';
+
+if ($BLOCK_INSTANCE) {
+	$command .= "| head -n $BLOCK_INSTANCE|tail -n 1"
+}
 
 # read the first line of the "acpi" command output
-open (ACPI, 'acpi -b |') or die "Can't exec acpi: $!\n";
+$command .= '|';
+open (ACPI, $command) or die "Can't exec acpi: $!\n";
 $acpi = <ACPI>;
 close(ACPI);
 
